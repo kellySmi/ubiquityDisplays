@@ -1,0 +1,14 @@
+<html>
+	<head>
+	<title>ubiquity</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	{{ JSGlue.include() }}
+	{% block header %}{% endblock %}
+   </head>
+   <body>
+	<section class="content">
+  {% block content %}{% endblock %}
+  
+	</section>
+</body>
+</html>

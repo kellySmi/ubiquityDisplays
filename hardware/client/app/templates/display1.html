@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  	<img id="display-img" height="100%" width="100%" src="{{ url_for('static',filename='img/logo.png')}}" />
+	<script type="text/javascript">
+		var image_ar = JSON.parse('{{ image_ar | tojson }}');
+		var intval =  '{{ intval }}';
+		var curIdx = 0;
+		changeDisplay();
+		setInterval(changeDisplay,intval);
+		function changeDisplay(){
+			if(curIdx == image_ar.length){
+				curIdx = 0;
+			}
+			var imgLoc = "img/"+image_ar[curIdx];
+			var imgDest = Flask.url_for('static', {"filename":imgLoc});
+			document.getElementById("display-img").src = imgDest;
+			curIdx++;
+		}
+	</script>
+{% endblock %}
