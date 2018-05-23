@@ -2,12 +2,11 @@ This is a Client Server application for advertising displays
 
 Installation notes:
 Create Virtual environemnt 
- /server-displays
+ /displays-admin
  	- app
  		- __init__.py
  		- routes.py
- 	- env
- 	- instance
+ 		- 
  	- requirements.txt
  	- run.py
 
