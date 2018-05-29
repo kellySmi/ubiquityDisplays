@@ -1,5 +1,16 @@
 SD Card Setup after raspbian install using etch
 
+sudo apt-get update
+sudo apt-get full-upgrade
+
+install python pip
+apt-get install python-pip
+
+
+install Node
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
 sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox
 sudo apt-get install --no-install-recommends chromium-browser
 
@@ -16,7 +27,7 @@ setxkbmap -option terminate:ctrl_alt_bksp
 # Start Chromium in kiosk mode
 sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'
 sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
-chromium-browser --disable-infobars --kiosk 'http://129.168.11.1:5000/service/display'
+chromium-browser --disable-infobars --kiosk 'http://localhost/'
 `--------------------
 
 ~/.bash_profile

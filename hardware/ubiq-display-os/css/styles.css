@@ -1,66 +1,53 @@
-*{
-	margin:0;
-	padding:0;
+body { 
+	color: #000;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: left;
+	background: #333333;
 }
-
-html{
-	background: #333;
-	position: absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	color:#fff;
-}
-
-body{
-	font: 14px/1.5 Arial, Helvetica, sans-serif;
-	
-}
-
-a, a:visited, a:hover{
-	color:#000;
-	text-decoration: none;
-}
-
-#statusSection {
-	min-height: 80px;
-}
-
-#status {
-	font-weight: 800;
-	font-size:16px;
-}
-
-.errorStatus, .errorStatus > span {
-	color: rgb(235,0,0);
-}
-
-.inline-header {
-	display: inline;
-}
-
-#closeButton {
-	float: right;
-	margin-right: 16px;
-}
-
-#browseButton {
-	margin-right: 2px;
- 	margin-left: -8px !important;
-	vertical-align: super;
-}
-
-#progressbar {
-	width: 40%; 
-	height: 12px;
-}
-
-#locationDiv {
-    max-width: 458px !important; 
-	overflow: hidden; 
-	white-space: nowrap; 
-	text-overflow: ellipsis; 
+h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
+h3 {font-family: sans-serif; color: #FFF;}
+a { color: #377ba8; }
+hr { border: none; border-top: 1px solid lightgray; }
+nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
+nav h1 { flex: auto; margin: 0; }
+nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
+nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
+nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
+.content { padding: 0 1rem 1rem; }
+.content > header { border-bottom: 1px solid lightgray; display: flex; align-items: flex-end; }
+.content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; }
+.flash { margin: 1em 0; padding: 1em; background: #cae6f6; border: 1px solid #377ba8; }
+.post > header { display: flex; align-items: flex-end; font-size: 0.85em; }
+.post > header > div:first-of-type { flex: auto; }
+.post > header h1 { font-size: 1.5em; margin-bottom: 0; }
+.post .about { color: slategray; font-style: italic; }
+.post .body { white-space: pre-line; }
+.content:last-child { margin-bottom: 0; }
+.content form { margin: 1em 0; display: flex; flex-direction: column; }
+.content label { font-weight: bold; margin-bottom: 0.5em; }
+.content input, .content textarea { margin-bottom: 1em; }
+.content textarea { min-height: 12em; resize: vertical; }
+input.danger { color: #cc2f2e; }
+input[type=submit] { align-self: start; min-width: 10em; }
+.header-contents {
 	display: inline-block;
+	height: 40px;
+	width: 224px;
+	background-image: url("../img/logo.png");
+	background-repeat: no-repeat;
 }
-
+.logo-brand {
+	float: left;
+    margin-right: 30px;
+    color: #666;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+	height: 100px;
+ }
+form.modalForm > div.container {
+	width:50% !important;
+}
