@@ -23,6 +23,9 @@ def getAll_sequences():
 def getAll_clients():
     return query_db("SELECT * FROM clients")
 
+def getAllUsers():
+    return query_db("SELECT * FROM client_auth")
+
 def make_dicts(cursor, row):
     return dict((cursor.description[idx][0], value)
                 for idx, value in enumerate(row))

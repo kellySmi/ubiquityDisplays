@@ -1,0 +1,13 @@
+[Service]
+WorkingDirectory=/home/pi/clientApp
+ExecStart=http-server /home/pi/clientApp/server.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodeServer
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

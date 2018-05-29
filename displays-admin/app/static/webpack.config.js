@@ -36,13 +36,17 @@ const config = {
     plugins: [
         new ExtractTextPlugin('styles.css'),
         new CopyWebpackPlugin([
-            {from:'./node_modules/ag-grid/dist/styles/ag-grid.css',
+            {   from:'./node_modules/ag-grid/dist/styles/ag-grid.css',
                 to: __dirname + '/dist/ag-grid/dist/styles/ag-grid.css',
                 toType: 'file'
             },
-            {from:'./node_modules/ag-grid/dist/styles/ag-theme-bootstrap.css',
-            to: __dirname + '/dist/ag-grid/dist/styles/ag-theme-bootstrap.css',
-            toType: 'file'
+            {   from:'./node_modules/ag-grid/dist/styles/ag-theme-bootstrap.css',
+                to: __dirname + '/dist/ag-grid/dist/styles/ag-theme-bootstrap.css',
+                toType: 'file'
+            },
+            {   from: './login.html',
+                to: __dirname + '/dist/login.html',
+                toType: 'file'
             }
         ]),
         new HtmlWebpackPlugin({title:"ubiquity displays", template: 'index.html', inject:'body'})

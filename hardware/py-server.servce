@@ -1,0 +1,13 @@
+[Service]
+WorkingDirectory=/home/pi/clientServer
+ExecStart=python3 /home/pi/clientServer/serverpy
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodeServer
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS display_types;
 DROP TABLE IF EXISTS display_sequences;
 
 CREATE TABLE client_auth (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   client_id INTEGER NOT NULL,
   username TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
