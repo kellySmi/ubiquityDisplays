@@ -47,7 +47,12 @@ const config = {
             {   from: './login.html',
                 to: __dirname + '/dist/login.html',
                 toType: 'file'
+            },
+            {   from: './demo',
+                to: __dirname + '/dist/demo/',
+                toType: 'dir'
             }
+
         ]),
         new HtmlWebpackPlugin({title:"ubiquity displays", template: 'index.html', inject:'body'})
     ]

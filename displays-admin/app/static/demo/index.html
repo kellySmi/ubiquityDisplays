@@ -1,0 +1,29 @@
+<html>
+	<head>
+	<title>ubiquity</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='demo/css/styles.css') }}">
+	{{ JSGlue.include() }}
+	{% block header %}{% endblock %}
+   </head>
+   <body>
+	<section class="content">
+  	<img id="display-img" height="100%" width="100%" src="{{ url_for('static',filename='demo/img/splash.png')}}" />
+	<script type="text/javascript">
+		var image_ar = JSON.parse('{{ image_ar | tojson }}');
+		var intval =  '{{ intval }}';
+		var curIdx = 0;
+		//changeDisplay();
+		setInterval(changeDisplay,intval);
+		function changeDisplay(){
+			if(curIdx == image_ar.length){
+				curIdx = 0;
+			}
+			var imgLoc = "demo/img/"+image_ar[curIdx];
+			var imgDest = Flask.url_for('static', {"filename":imgLoc});
+			document.getElementById("display-img").src = imgDest;
+			curIdx++;
+		}
+	</script>
+	</section>
+</body>
+</html>

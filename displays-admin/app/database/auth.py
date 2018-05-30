@@ -1,25 +1,8 @@
 from .db import getUser, createUser, getAllUsers
 #from flask_jwt import JWT, jwt_required, current_identity
-import bcrypt
+#import bcrypt
 from flask_jwt_login import JWT, process_login, login_required
 from werkzeug.security import generate_password_hash, check_password_hash, safe_str_cmp
-
-
-
-
-# def authenticate(username, password):
-# 	users = getAllUsers()
-# 	username_table = {u.username: u for u in users}
-# 	user = username_table.get(username, None)
-# 	if user and safe_str_cmp(user.password.encode('utf-8'), password.encode('utf-8')):
-# 		return user
-
-# def identity(payload):
-# 	users = getAllUsers()
-# 	userid_table = {u.id: u for u in users}
-# 	user_id = payload['identity']
-# 	return userid_table.get(user_id, None)
-
 
 def registerAuth(username,password):
     error = None
@@ -37,18 +20,12 @@ def registerAuth(username,password):
     return { "success" : False, "message" : error }
 
 def authLogin(username,password):
-	error = None
-	user = getUser(username)
-	#hashed = bcrypt.hashpw(password, bcrypt.gensalt(10))
-
-
-
-	if user is None:
-		error = 'Incorrect username.'
-	elif not check_password_hash(user['password'], password):
-	#elif bcrypt.hashpw(password, hashed) != hashed:
-		error = 'Incorrect password.'
-
-	if error is None:
-		return {"success" : True, "user" : user}
-	return { "success" : False, "message" : error }
+    error = None
+    user = getUser(username)
+    if user is None:
+        error = 'Incorrect username.'
+    elif not check_password_hash(user['password'], password):
+        error = 'Incorrect password.'
+    if error is None:
+        return True
+    return False
