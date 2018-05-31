@@ -1,5 +1,5 @@
 from app import app 
-from flask import render_template, request, jsonify, abort, redirect, session, make_response
+from flask import render_template, request, jsonify, abort, redirect, session, make_response,url_for
 from flask_session import Session
 #from flask_httpauth import HTTPBasicAuth
 from .database.db import getUser, getAll_displays, getAll_sequences, getAll_clients, createDisplay, createClient, createSequence
@@ -8,11 +8,12 @@ from .database.auth import registerAuth, authLogin
 #from flask_jwt import JWT, jwt_required, current_identity
 from flask_jwt_login import JWT, process_login, login_required
 from .models.user import User
-
+from flask_jsglue import JSGlue
 
 #app.config.from_object('config.Config')
 app.config.from_object(__name__)
 Session(app)
+jsglue = JSGlue(app)
 TOKEN_NAME='token'
 app.config["SECRET_KEY"] = "super secret"
 app.config["JWT_COOKIE_NAME"] = TOKEN_NAME
@@ -35,39 +36,48 @@ def auth_handler(username, password):
 	return User(users['id'], users['password'], users['username'])
 	#return None
 
-#@jwt.identity_handler	
-# def identify(payload):
-#     return False 
 
 @jwt.unauthorized_handler
 def unauthorized_handler():
-	return 'Unauthorized Access', 501
+	return render_template('login.html')
 
 
-@app.route('/auth/client/login', methods=['POST'])
-def clientLogin():
-	#if request.method is 'POST':
-	token = process_login(request.form["username"], request.form["password"])
-	response = make_response("you are signed in")
-	response.set_cookie(TOKEN_NAME, token)
-	redirect("api/client-display", code=307)
-	return response
+
+# @app.route('/auth/client/login', methods=['POST'])
+# def clientLogin():
+# 	#if request.method is 'POST':
+# 	token = process_login(request.form["username"], request.form["password"])
+# 	response = make_response(url_for("display-demo"))
+# 	response.set_cookie(TOKEN_NAME, token)
+# 	redirect("api/client-display", code=307)
+# 	return response
    
-	#session.clear()
-	#session['user'] = auth['user']['id']
+# 	#session.clear()
+# 	#session['user'] = auth['user']['id']
 	
-	#return jsonify(auth)
-	#return accessToken
+# 	#return jsonify(auth)
+# 	#return accessToken
 
-@app.route('/auth/client/register', methods=['POST'])
-def clienRegister():
-	username = request.form['username']
-	passwd = request.form['password']
-	#data = request.get_json()
-	response = registerAuth(username,passwd)
-	if response['success']:
-		redirect("/login_success", code=307)
-	return jsonify(response)
+# @app.route('/auth/client/register', methods=['POST'])
+# def clienRegister():
+# 	username = request.form['username']
+# 	passwd = request.form['password']
+# 	#data = request.get_json()
+# 	response = registerAuth(username,passwd)
+# 	if response['success']:
+# 		redirect("/login_success", code=307)
+# 	return jsonify(response)
+
+# @app.route("/display-demo")
+# def demo():
+# 	image_ar = ['display1.jpg','display2.jpg','display3.jpg']
+# 	intval = 10000 # 10 secs
+# 	return render_template('demo/index.html', image_ar=image_ar, intval=intval)
+
+# @app.route('/api/client-display',methods=['GET','POST'])
+# @login_required
+# def clientDisplay():
+# 	return jsonify({"display":"1"})
 
 @app.route('/auth/admin/register', methods=['POST'])
 def adminRegister():
@@ -76,26 +86,24 @@ def adminRegister():
 	#data = request.get_json()
 	response = registerAuth(username,passwd)
 	if response['success']:
-		redirect("login_success", code=307)
+		#redirect("login_success", code=307)
+		token = process_login(request.form["username"], request.form["password"])
+		resp = make_response(redirect("/displays", code=307))
+		resp.set_cookie(TOKEN_NAME, token)
+		return resp
 	return jsonify(response)
 
-@app.route('/auth/admin/login')
+@app.route('/auth/admin/login', methods=['POST'])
 def adminLogin():
 	token = process_login(request.form["username"], request.form["password"])
-	response = make_response("you are signed in")
+	response = make_response(redirect("/displays", code=307))
 	response.set_cookie(TOKEN_NAME, token)
-	redirect("displays", code=307)
+	#redirect("displays", code=307)
 	return response
 
-@app.route("/displays")
-@login_required
-def admin_success():
+@app.route('/displays', methods=['GET','POST'])
+def adminDisplays():
 	return render_template('index.html')
-
-@app.route('/api/client-display',methods=['GET','POST'])
-@login_required
-def clientDisplay():
-	return jsonify({"display":"1"})
 
 @app.route('/api/<type>',methods=['GET'])
 def getAll(type):
@@ -141,6 +149,6 @@ def deleteRec(type):
 
 @app.route('/',defaults={'path': ''})
 @app.route('/<path:path>')
-#@auth.login_required
+@login_required
 def catchAll(path):
 	return render_template('index.html')

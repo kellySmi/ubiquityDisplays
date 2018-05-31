@@ -2,13 +2,16 @@ import React from 'react';
 import App from './App';
 import { Route } from 'react-router-dom' 
 import HomePage from './components/home/homePage';  
+import DisplaysPage from './components/displays/displaysPage'; 
+import ClientsPage from './components/clients/clientsPage'; 
+import SequencesPage from './components/sequences/sequencesPage';  
+import  { Container } from 'semantic-ui-react';
 
 export default (  
-	<div>
+	<Container>
 		<Route path="/" component={App} />
     	<Route path="/" component={HomePage} />
     	<Route path="/displays" component={() => (<HomePage activeTab="displays" />)} />
-    	<Route path="/clients" component={() => (<HomePage activeTab="clients" />)} />
-    	<Route path="/sequences" component={() => (<HomePage activeTab="seq" />)} />
-  	</div>
+    	
+  	</Container>
 );

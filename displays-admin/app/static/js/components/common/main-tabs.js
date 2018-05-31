@@ -16,14 +16,14 @@ export default class MainTabs extends React.Component {
   		return (
   			<Tab.Container id="nav-tabs" defaultActiveKey="displays" activeKey={this.props.activeTab} onSelect={key => this.handleSelect(key)}>
           <Row className="clearfix">
-            <Col sm={16}>
+            <Col md={16}>
               <Nav bsStyle="tabs">
                 <NavItem eventKey="displays">Displays</NavItem>
                 <NavItem eventKey="clients">Clients</NavItem> 
                 <NavItem eventKey="seq">Sequences</NavItem>
               </Nav>
             </Col>
-            <Col sm={16}>
+            <Col md={16}>
               <Tab.Content>
                 <Tab.Pane eventKey="displays"><DisplaysPage /></Tab.Pane>
                 <Tab.Pane eventKey="clients"><ClientsPage /></Tab.Pane>

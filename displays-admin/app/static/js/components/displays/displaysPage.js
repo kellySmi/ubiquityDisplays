@@ -73,7 +73,7 @@ class DisplaysPage extends React.Component {
     }
   	render() {
       return  (
-          <div className="ag-theme-balham" style={{height: '600px', width: '1000px' }} >
+          <div className="ag-theme-balham" style={{height: '600px', width: '1110px' }} >
             <ActionBar onButtonClick={this.toggleModal} />
             <DisplayGrid />
             <ReactModal isOpen={this.state.isOpen} contentLabel="Example Modal"  onRequestClose={this.toggleModal} style={modalStyles}>
