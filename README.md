@@ -1,13 +1,14 @@
-##This is a Client Server application for IoT displays
+# Ubiqity Displays
+## This is a Client Server application for IoT displays
 
 
-####Installation:
+#### Installation:
 ```bash
 $ git clone https://github.com/kellySmi/ubiquityDisplays.git
 $ cd ubiquityDisplays/displays-admin/static
 $ npm install 
 ```
-####Create Virtual environemnt 
+#### Create Virtual environemnt 
 
 
  /displays-admin
