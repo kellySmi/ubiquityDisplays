@@ -1,7 +1,15 @@
-This is a Client Server application for advertising displays
+##This is a Client Server application for IoT displays
 
-Installation notes:
-Create Virtual environemnt 
+
+####Installation:
+```bash
+$ git clone https://github.com/kellySmi/ubiquityDisplays.git
+$ cd ubiquityDisplays/displays-admin/static
+$ npm install 
+```
+####Create Virtual environemnt 
+
+
  /displays-admin
  	- app
  		- __init__.py
