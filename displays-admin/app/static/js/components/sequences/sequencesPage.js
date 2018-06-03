@@ -20,7 +20,7 @@ class SequencesPage extends React.Component {
   }
   render() {
   	return  (
-      <div className="ag-theme-balham" style={{height: '600px', width: '1000px' }} >
+      <div className="ag-theme-balham" style={{height: '600px', width: '970px' }} >
             <ActionBar onButtonClick={this.toggleModal} />
             <SequenceGrid sequences={this.props.sequences}/>
             <ReactModal isOpen={this.state.isOpen} contentLabel="Example Modal"  onRequestClose={this.toggleModal} style={Config.modalStyles}>

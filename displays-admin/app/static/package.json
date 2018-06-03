@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "ag-grid": "^17.1.1",
+    "ag-grid-enterprise": "^17.1.1",
     "ag-grid-react": "^17.1.0",
     "ajv": "^6.4.0",
     "babel-core": "^6.25.0",

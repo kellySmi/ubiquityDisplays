@@ -21,28 +21,8 @@ class DisplayGrid extends React.Component {
         this.editRow =  this.editRow.bind(this);
         this.getContextMenuItems = this.getContextMenuItems.bind(this);
     }
-   editRow(){
-
-   }
-   getContextMenuItems (params){
-    if (!params.node) return [];
-    let display_id = params.node.data ? params.node.data.display_id : [];
-
-    let deleteItem = {
-        name: "Delete",
-        action: () => this.props.actions.deleteDisplay(display_id)
-    };
-
-    /*let editItem = {
-        name: "Edit",
-        action: () => this.props.actions.editDisplay(filePath)
-    };*/
-    //return params.node.data.file ? [deleteItem] : [editItem, deleteItem];
-    return [deleteItem];
-
-};
     render() {
-        return  (<AgGridReact id="display-grid" getContextMenuItems={this.getContextMenuItems(this)} columnDefs={this.state.columnDefs} rowData={this.props.displays} />);
+        return  (<AgGridReact id="display-grid" columnDefs={this.state.columnDefs} rowData={this.props.displays} />);
     }
 }
 
